@@ -1,7 +1,10 @@
 function MainContent() {
     return (
         <main>
-            <p>Top 5 Cities to Visit</p>
+            <p>I love to visit New York, Paris, and Tokyo.</p>
         </main>
     );
 }
+
+
+export default MainContent;
