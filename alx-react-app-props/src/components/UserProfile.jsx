@@ -1,3 +1,5 @@
+import UserContext from "../context/UserContext";
+
 function UserProfile() {
   const userData = useContext(UserContext);
 
