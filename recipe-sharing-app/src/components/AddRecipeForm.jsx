@@ -31,4 +31,4 @@
       </form>
     );
   };
-    export { AddRecipeForm };
+    export default AddRecipeForm;

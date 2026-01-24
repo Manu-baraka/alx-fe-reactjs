@@ -15,4 +15,4 @@
       </div>
     );
   };
-    export { RecipeList };
+    export default RecipeList;
