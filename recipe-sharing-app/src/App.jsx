@@ -2,29 +2,16 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Home from './components/Home';
-import Contact from './components/Contact';
-import About from './components/About';
-import Services from './components/Services';
-import Navbar from './components/Navbar';
-
-
+import { AddRecipeForm } from './components/AddRecipeForm.jsx'
+import { RecipeList } from './components/RecipeList.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Navbar />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home /> } />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-        </Routes>
-      </BrowserRouter>
+    <AddRecipeForm />
+    <RecipeList />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
