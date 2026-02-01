@@ -87,6 +87,10 @@ function Search() {
           placeholder="Enter GitHub username"
         />
         <button type="submit">Search</button>
+        <button className="bg-red-500 text-white px-4 py-2 rounded">
+  Tailwind Test
+</button>
+
       </form>
 
       {/* Step 3: Conditional rendering */}
