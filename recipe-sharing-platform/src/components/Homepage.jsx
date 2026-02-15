@@ -15,7 +15,7 @@ const HomePage = () => {
       <h1 className="text-3xl font-bold mb-6 text-center">Recipe Collection</h1>
 
       {/* Responsive Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {recipes.map((recipe) => (
           <div
             key={recipe.id}
