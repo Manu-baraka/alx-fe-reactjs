@@ -89,7 +89,7 @@ const AddRecipeForm = () => {
               placeholder="Chicken\nOnion\nGarlic\nSpices"
             />
             {errors.ingredients && (
-              <p className="text-red-500 text-sm">{errors.ingredients}</p>
+              <p className="sm:text-red-500 text-sm md:text-black text-md">{errors.ingredients}</p>
             )}
           </div>
 
@@ -104,7 +104,7 @@ const AddRecipeForm = () => {
               placeholder="Boil chicken\nFry onions\nAdd spices\nSimmer"
             />
             {errors.steps && (
-              <p className="text-red-500 text-sm">{errors.steps}</p>
+              <p className="sm:text-red-500 text-sm md:text-black text-md">{errors.steps}</p>
             )}
           </div>
 
