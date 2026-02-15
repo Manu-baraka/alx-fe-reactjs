@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
+import data from "../data/recipes.json";
 
-const HomePage = () => {
+function HomePage() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    fetch("/data.json")
-      .then((response) => response.json())
-      .then((data) => setRecipes(data))
-      .catch((error) => console.error("Error loading recipes:", error));
+    setRecipes([data]);
   }, []);
-
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6 text-center">Recipe Collection</h1>
