@@ -45,5 +45,14 @@ import { Link } from "react-router-dom";
   </div>
 </Link>
 
+import { Link } from "react-router-dom";
+
+<Link to={`/recipe/${recipe.id}`}>
+  <div className="bg-white shadow-md rounded-lg p-4 hover:shadow-xl transition">
+    <img src={recipe.image} className="h-40 w-full object-cover rounded" />
+    <h2 className="text-xl font-bold mt-2">{recipe.title}</h2>
+  </div>
+</Link>
+
 
 export default HomePage;
