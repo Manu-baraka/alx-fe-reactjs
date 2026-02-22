@@ -78,4 +78,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
   );
 }
 
+<<<<<<< HEAD:form-handling-react/src/components/FormikForm.js
 export default formikForm;
+=======
+export default FormikForm;
+>>>>>>> c0e2478befc99b515d1ceb6d7e27a9c37690c77d:form-handling-react/src/components/formikForm.js
