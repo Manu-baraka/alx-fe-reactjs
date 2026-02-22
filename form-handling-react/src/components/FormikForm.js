@@ -1,20 +1,36 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
 
- function FormikForm() {
+ function formikForm() {
   const initialValues = {
     username: "",
     email: "",
     password: "",
   };
 
-  const validationSchema = Yup.object({
-    username: Yup.string().required("Username is required"),
-    email: Yup.string().email("Invalid email").required("Email is required"),
-    password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Password is required"),
-  });
+  // Manual validation (Formik built-in)
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.username) {
+      errors.username = "Username is required";
+    }
+
+    if (!values.email) {
+      errors.email = "Email is required";
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+    ) {
+      errors.email = "Invalid email address";
+    }
+
+    if (!values.password) {
+      errors.password = "Password is required";
+    } else if (values.password.length < 6) {
+      errors.password = "Password must be at least 6 characters";
+    }
+
+    return errors;
+  };
 
   const onSubmit = (values) => {
     alert("Formik form submitted!");
@@ -25,12 +41,9 @@ import * as Yup from "yup";
     <div className="p-4 border rounded max-w-md mx-auto mt-6">
       <h2 className="text-xl font-bold mb-2">Formik Registration Form</h2>
 
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
+      <Formik initialValues={initialValues} validate={validate} onSubmit={onSubmit}>
         <Form className="space-y-2">
+          {/* Username */}
           <Field
             name="username"
             placeholder="Username"
@@ -38,6 +51,7 @@ import * as Yup from "yup";
           />
           <ErrorMessage name="username" component="div" className="text-red-500" />
 
+          {/* Email */}
           <Field
             name="email"
             type="email"
@@ -46,6 +60,7 @@ import * as Yup from "yup";
           />
           <ErrorMessage name="email" component="div" className="text-red-500" />
 
+          {/* Password */}
           <Field
             name="password"
             type="password"
@@ -63,4 +78,4 @@ import * as Yup from "yup";
   );
 }
 
-export default FormikForm;
+export default formikForm;

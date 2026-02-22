@@ -1,7 +1,8 @@
 import RegistrationForm from "./components/RegistrationForm";
-import FormikForm from "./components/FormikForm.js";
+import FormikForm from "./components/FormikForm";
 
-export default function App() {
+
+function App() {
   return (
     <div className="p-6 space-y-6">
       <RegistrationForm />
@@ -9,3 +10,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;
