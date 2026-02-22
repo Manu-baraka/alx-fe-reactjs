@@ -1,85 +1,47 @@
+// src/components/formikForm.js
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
- function formikForm() {
-  const initialValues = {
-    username: "",
-    email: "",
-    password: "",
-  };
+// Validation Schema (REQUIRED)
+const validationSchema = Yup.object({
+  name: Yup.string().required("Name is required"),
+  email: Yup.string().email("Invalid email").required("Email is required"),
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+});
 
-  // Manual validation (Formik built-in)
-  const validate = (values) => {
-    const errors = {};
-
-    if (!values.username) {
-      errors.username = "Username is required";
-    }
-
-    if (!values.email) {
-      errors.email = "Email is required";
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-    ) {
-      errors.email = "Invalid email address";
-    }
-
-    if (!values.password) {
-      errors.password = "Password is required";
-    } else if (values.password.length < 6) {
-      errors.password = "Password must be at least 6 characters";
-    }
-
-    return errors;
-  };
-
-  const onSubmit = (values) => {
-    alert("Formik form submitted!");
-    console.log(values);
-  };
-
+export default function FormikForm() {
   return (
-    <div className="p-4 border rounded max-w-md mx-auto mt-6">
-      <h2 className="text-xl font-bold mb-2">Formik Registration Form</h2>
+    <Formik
+      initialValues={{ name: "", email: "", password: "" }}
+      validationSchema={validationSchema}   // ✅ Important
+      onSubmit={(values) => {
+        console.log("Form Data:", values);
+      }}
+    >
+      <Form>
+        <div>
+          <label>Name:</label>
+          <Field name="name" />
+          <ErrorMessage name="name" component="div" />
+        </div>
 
-      <Formik initialValues={initialValues} validate={validate} onSubmit={onSubmit}>
-        <Form className="space-y-2">
-          {/* Username */}
-          <Field
-            name="username"
-            placeholder="Username"
-            className="border p-2 w-full"
-          />
-          <ErrorMessage name="username" component="div" className="text-red-500" />
+        <div>
+          <label>Email:</label>
+          <Field name="email" type="email" />
+          <ErrorMessage name="email" component="div" />
+        </div>
 
-          {/* Email */}
-          <Field
-            name="email"
-            type="email"
-            placeholder="Email"
-            className="border p-2 w-full"
-          />
-          <ErrorMessage name="email" component="div" className="text-red-500" />
+        <div>
+          <label>Password:</label>
+          <Field name="password" type="password" />
+          <ErrorMessage name="password" component="div" />
+        </div>
 
-          {/* Password */}
-          <Field
-            name="password"
-            type="password"
-            placeholder="Password"
-            className="border p-2 w-full"
-          />
-          <ErrorMessage name="password" component="div" className="text-red-500" />
-
-          <button type="submit" className="bg-green-600 text-white p-2 w-full">
-            Register
-          </button>
-        </Form>
-      </Formik>
-    </div>
+        <button type="submit">Submit</button>
+      </Form>
+    </Formik>
   );
 }
-
-<<<<<<< HEAD:form-handling-react/src/components/FormikForm.js
-export default formikForm;
-=======
-export default FormikForm;
->>>>>>> c0e2478befc99b515d1ceb6d7e27a9c37690c77d:form-handling-react/src/components/formikForm.js
