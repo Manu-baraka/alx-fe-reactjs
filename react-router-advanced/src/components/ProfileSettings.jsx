@@ -1,3 +1,3 @@
 export default function ProfileSettings() {
-  return <p>Profile Settings Section</p>;
+  return <h3>User Profile Settings Page</h3>;
 }
